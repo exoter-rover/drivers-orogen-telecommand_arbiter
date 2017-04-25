@@ -1,0 +1,31 @@
+name "telecommand_arbiter"
+
+using_library "telemetry_telecommand"
+
+import_types_from "base"
+import_types_from "telemetry_telecommand/Messages.hpp"
+
+task_context "Task" do
+    needs_configuration
+
+    input_port('tc_control_in', 'telemetry_telecommand/locomotion/ControlCommand').
+        doc 'Telecommand control input'
+    input_port('tc_trajectory_in', 'telemetry_telecommand/locomotion/TrajectoryCommand').
+        doc 'Telecommand trajectory input'
+
+    output_port('disable_direct_control', 'bool').
+        doc 'If true, disables direct control component'
+    output_port('disable_indirect_control', 'bool').
+        doc 'If true, disables indirect control component'
+    output_port('disable_waypoint_navigation', 'bool').
+        doc 'If true, disables waypoint navigation component'
+
+    output_port('tc_control_out', 'telemetry_telecommand/locomotion/ControlCommand').
+        doc 'Telecommand control output'
+    output_port('speed_out', 'double').
+        doc 'Linear speed output'
+    output_port('trajectory_out', 'std/vector<base/Waypoint>').
+        doc 'Trajectory output in the format for Waypoint Navigation'
+
+    port_driven "tc_control_in", "tc_trajectory_in"
+end

@@ -1,0 +1,12 @@
+<package>
+  <description brief="Distributes telecommands to waypoint navigation and (in-)direct motion control components.">
+  Prepares and forwards commands from TM/TC to intermediate components (Waypoint Navigation, Direct Motion control, etc.) which can then sent appropriate 2D motion commands to Locomotion Control.
+  </description>
+  <author>Levin Gerdes/levin.gerdes@esa.int</author>
+  <license></license>
+  <url>http://</url>
+  <logo>http://</logo>
+  <depend package="base/cmake" />
+  <depend package="control/waypoint_navigation" />
+  <depend package="drivers/telemetry_telecommand" />
+</package>
